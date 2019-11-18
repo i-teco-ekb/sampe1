@@ -1,16 +1,19 @@
 package test.kotlin.entities
 
+import org.hibernate.annotations.Cascade
 import javax.persistence.*
 
 @Entity
+@Table(name = "Club")
 data class Club (
 
         @Id
-        @GeneratedValue(strategy = GenerationType.SEQUENCE)
+        @GeneratedValue(strategy = GenerationType.AUTO)
+        @Column(name = "id", nullable = false, insertable = true, updatable = true)
         var id: Long? = null,
 
         var name: String? = null,
 
-        @ManyToMany
+        @ManyToMany(cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL], fetch = FetchType.LAZY)
         var students: List<Student>? = null
 )

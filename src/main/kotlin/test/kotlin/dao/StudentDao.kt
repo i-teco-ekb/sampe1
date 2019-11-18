@@ -3,6 +3,7 @@ package test.kotlin.dao
 import org.hibernate.Session
 import test.kotlin.entities.Student
 import org.hibernate.SessionFactory
+import org.hibernate.Transaction
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder
 import org.springframework.boot.convert.ApplicationConversionService.configure
 import org.hibernate.cfg.Configuration;
@@ -10,10 +11,14 @@ import org.hibernate.cfg.Configuration;
 class StudentDao {
 
     fun save(student: Student) {
-
-        StandardServiceRegistryBuilder().applySetting(
-                Configuration().configure().properties.toString()
-        )
-//        val currentSession = SessionFactory
+        SessionFactoryUtil { session: Session ->
+            session.save(student)
+            session.flush()
+        }
     }
+
+    fun get(id: Long): Student? = SessionFactoryUtil { session: Session ->
+        session.load(id, Student::class.java) as Student
+    }
+
 }
