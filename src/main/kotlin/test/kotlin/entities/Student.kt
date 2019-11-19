@@ -13,7 +13,7 @@ class Student(
         var group: Group? = null,
 
         @ManyToMany(cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL], fetch = FetchType.LAZY)
-        var club: List<Club>? = null
+        var clubs: List<Club>? = null
 ) : AbstractJpaPersistable<Long>() {
 
         override fun toString(): String {

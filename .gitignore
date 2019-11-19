@@ -4,3 +4,4 @@ build/
 .idea
 pgdata
 **/*.iml
+/db
