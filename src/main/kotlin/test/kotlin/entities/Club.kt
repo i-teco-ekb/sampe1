@@ -5,7 +5,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "Club")
-data class Club (
+class Club (
 
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,4 +16,8 @@ data class Club (
 
         @ManyToMany(cascade = [CascadeType.PERSIST, CascadeType.MERGE, CascadeType.ALL], fetch = FetchType.LAZY)
         var students: List<Student>? = null
-)
+) {
+        override fun toString(): String {
+                return "Club $id $name"
+        }
+}

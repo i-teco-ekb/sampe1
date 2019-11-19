@@ -26,7 +26,7 @@ class StudentTest {
 
         val newStudent: Student? = studentDao.get(id!!)
 
-        println("--------------------------------------\n new student = $newStudent student = $student")
+        println("--------------------------------------\n newStudent = $newStudent student = $student")
 
         assertThat(newStudent).isNotNull
         assertThat(newStudent?.name).isEqualTo(student.name)

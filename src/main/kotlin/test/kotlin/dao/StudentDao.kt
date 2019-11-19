@@ -18,7 +18,7 @@ class StudentDao {
     }
 
     fun get(id: Long): Student? = SessionFactoryUtil { session: Session ->
-        session.load(id, Student::class.java) as Student
+        session.load(Student::class.java, id) as Student
     }
 
 }
