@@ -13,7 +13,7 @@
         <spring.boot>2.2.1.RELEASE</spring.boot>
         <hibernate.core>5.4.9.Final</hibernate.core>
         <h2>1.4.200</h2>
-        <junit>5.4.0</junit>
+        <junit>5.5.2</junit>
     </properties>
 
     <dependencies>
@@ -55,6 +55,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 

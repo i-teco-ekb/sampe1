@@ -13,22 +13,27 @@ object SessionFactoryUtil {
 
     @JvmStatic
     val sessionFactory = try {
-            val configuration = Configuration().configure().apply {
-                addAnnotatedClass(Student::class.java)
-                addAnnotatedClass(Group::class.java)
-                addAnnotatedClass(Club::class.java)
-            }
-            val builder = StandardServiceRegistryBuilder().applySettings(configuration.properties)
-            configuration.buildSessionFactory(builder.build())
-        } catch (e: Throwable) {
-            e.printStackTrace()
-            throw e
+        val configuration = Configuration().configure().apply {
+            addAnnotatedClass(Student::class.java)
+            addAnnotatedClass(Group::class.java)
+            addAnnotatedClass(Club::class.java)
         }
+        val builder = StandardServiceRegistryBuilder().applySettings(configuration.properties)
+        configuration.buildSessionFactory(builder.build())
+    } catch (e: Throwable) {
+        e.printStackTrace()
+        throw e
+    }
 
     val session: Session
         get() = sessionFactory.currentSession
 
     operator fun <T> invoke(block: (Session) -> T): T {
+        val session = this.session
+        return block(session)
+    }
+
+    fun <T> transaction(block: (Session) -> T): T {
         val session = this.session
         val transaction = session.transaction
         return try {
