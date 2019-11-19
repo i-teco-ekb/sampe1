@@ -2,11 +2,9 @@ package test.kotlin.entities
 
 import org.hibernate.Hibernate
 import java.io.Serializable
-import javax.persistence.Column
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
+@MappedSuperclass
 abstract class AbstractJpaPersistable<T : Serializable> {
 
     @Id
