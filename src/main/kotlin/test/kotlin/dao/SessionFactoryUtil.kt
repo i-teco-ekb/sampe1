@@ -8,6 +8,7 @@ import org.hibernate.cfg.Configuration
 import test.kotlin.entities.Club
 import test.kotlin.entities.Group
 import test.kotlin.entities.Student
+import java.sql.Connection
 
 object SessionFactoryUtil {
 
@@ -37,6 +38,9 @@ object SessionFactoryUtil {
         return try {
             transaction.begin()
             val result = block(session)
+            session.doWork {
+                it.transactionIsolation = Connection.TRANSACTION_REPEATABLE_READ
+            }
             transaction.commit()
             result
         } catch (e: Throwable) {

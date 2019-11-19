@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class StudentController {
 
-//    @RequestMapping(name = "/", method = arrayOf(RequestMethod.GET))
-//    fun getStudents()
-//    {
-//
-//    }
+    @RequestMapping(value = ["/"], method = [RequestMethod.GET])
+    fun getStudents() {
+
+
+    }
 }
