@@ -28,14 +28,12 @@ object SessionFactoryUtil {
     val session: Session
         get() = sessionFactory.currentSession
 
-    operator fun <T> invoke(block: (Session) -> T): T {
-        val session = this.session
-        return block(session)
-    }
+    operator fun <T> invoke(block: (Session) -> T): T = block(session)
 
     fun <T> transaction(block: (Session) -> T): T {
         val session = this.session
         val transaction = session.transaction
+        if (transaction.isActive) return block(session)
         return try {
             transaction.begin()
             val result = block(session)
