@@ -3,6 +3,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import test.kotlin.dao.IStudentDao
 import test.kotlin.dao.StudentDao
+import test.kotlin.dao.StudentDaoSpring
 import test.kotlin.dao.StudentDaoTransactional
 import test.kotlin.entities.Group
 import test.kotlin.entities.Student
@@ -10,7 +11,7 @@ import test.kotlin.entities.Student
 class StudentTest {
 
     @ParameterizedTest
-    @ValueSource(classes = [StudentDao::class, StudentDaoTransactional::class])
+    @ValueSource(classes = [StudentDao::class, StudentDaoTransactional::class, StudentDaoSpring::class])
     fun saveTest(iStudent : Class<IStudentDao>) {
         val dao = iStudent.newInstance()
         val student = Student(

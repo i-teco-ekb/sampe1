@@ -1,7 +1,6 @@
 package test.kotlin.dao
 
 import org.hibernate.Session
-import org.hibernate.Transaction
 import org.junit.jupiter.api.Test
 
 internal class SessionFactoryUtilTest {
