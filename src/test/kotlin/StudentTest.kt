@@ -1,8 +1,11 @@
 import org.assertj.core.api.Assertions.assertThat
 import org.hibernate.Session
+import org.hibernate.SessionFactory
 import org.junit.jupiter.api.Test
+import org.springframework.orm.hibernate5.HibernateTransactionManager
 import test.kotlin.dao.SessionFactoryUtil
 import test.kotlin.dao.StudentDao
+import test.kotlin.dao.StudentDaoSpring
 import test.kotlin.entities.Group
 import test.kotlin.entities.Student
 
@@ -45,12 +48,12 @@ class StudentTest {
 
 
         val studentDaoTransactional = StudentDao()
-        SessionFactoryUtil.transaction {session: Session ->
+        SessionFactoryUtil.transaction { session: Session ->
             studentDaoTransactional.save(student)
         }
 
-        val newStudent = SessionFactoryUtil.transaction {session: Session ->
-            student.id?.let{ studentDaoTransactional.get(it) }
+        val newStudent = SessionFactoryUtil.transaction { session: Session ->
+            student.id?.let { studentDaoTransactional.get(it) }
         }
 
         val clubs = newStudent?.clubs

@@ -18,9 +18,6 @@ open class DBConfig(val context: ApplicationContext) {
     open fun sessionFactory(dataSource: DataSource) : LocalSessionFactoryBean = LocalSessionFactoryBean()
             .apply {
                 setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"))
-//                setDataSource(dataSource)
-//                setPackagesToScan("com.baeldung.hibernate.bootstrap.model")
-//                hibernateProperties = hibernateProperties()
     }
 
     @Bean
