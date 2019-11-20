@@ -1,16 +1,13 @@
+package test.kotlin.dao
+
 import org.assertj.core.api.Assertions
 import org.hibernate.Session
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.junit.jupiter.SpringExtension
-import test.kotlin.dao.SessionFactoryUtil
-import test.kotlin.dao.StudentDaoSpring
 import test.kotlin.entities.Group
 import test.kotlin.entities.Student
 
-@ExtendWith(SpringExtension::class)
 @SpringBootTest
 class StudentSpringTest {
 

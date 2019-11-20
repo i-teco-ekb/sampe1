@@ -1,11 +1,8 @@
+package test.kotlin.dao
+
 import org.assertj.core.api.Assertions.assertThat
 import org.hibernate.Session
-import org.hibernate.SessionFactory
 import org.junit.jupiter.api.Test
-import org.springframework.orm.hibernate5.HibernateTransactionManager
-import test.kotlin.dao.SessionFactoryUtil
-import test.kotlin.dao.StudentDao
-import test.kotlin.dao.StudentDaoSpring
 import test.kotlin.entities.Group
 import test.kotlin.entities.Student
 
