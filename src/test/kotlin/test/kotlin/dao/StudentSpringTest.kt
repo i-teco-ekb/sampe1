@@ -12,7 +12,8 @@ import test.kotlin.entities.Student
 class StudentSpringTest {
 
     @Autowired
-    lateinit var studentDaoSpring: StudentDaoSpring
+    lateinit var studentDaoSpring: IStudentDao
+//    lateinit var studentDaoSpring: StudentDaoSpring
 
     @Test
     fun springTransactionTest() {

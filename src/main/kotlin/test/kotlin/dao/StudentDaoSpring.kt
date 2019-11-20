@@ -15,7 +15,7 @@ open class StudentDaoSpring(private val sessionFactory: SessionFactory) : IStude
 
     @Transactional(propagation = Propagation.REQUIRED)
     override fun save(student: Student) {
-        val session: Session = this.sessionFactory.currentSession
+        val session: Session = sessionFactory.currentSession
         session.save(student)
     }
 
