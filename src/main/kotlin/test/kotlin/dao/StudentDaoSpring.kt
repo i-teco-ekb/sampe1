@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository
 import test.kotlin.entities.Student
 import org.springframework.transaction.annotation.Transactional;
 import org.hibernate.SessionFactory
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.transaction.annotation.Propagation
 
 
